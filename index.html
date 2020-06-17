@@ -1,0 +1,609 @@
+<html>
+    <head>
+        <title>Push Gaming JS Test</title>
+        <style>
+            body{
+                max-width:1000px;
+                padding:20px;
+                margin: 0px auto;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #CCEEFF;
+            }
+            .question{
+                background-color: #226699;
+                color: #FFFFFF;
+                margin-top:60px;
+                padding:15px;
+            
+            }
+            .answer{
+                background-color: #ffffff;
+                padding:15px
+            }
+            .codeOuptut{
+                color: #1133cc;
+                font-weight: bold;
+                background-color: aliceblue;
+                padding:5px;
+            }
+            pre{
+                background-color: #333333;
+                color: #ffffff;
+                overflow: auto;
+                border-left: 3px solid #f36d33;
+            }
+            .questionCode{
+                background-color: #666666;
+                border-left: 3px solid #000275;
+            }
+        </style>
+        <meta 
+         name='viewport' 
+         content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' 
+        >
+    </head>
+    <body>
+
+        <!--
+
+        <div id='q1' class='question'>
+        
+        </div>
+        <div id='a1' class='answer'>
+           
+        </div>
+-->
+
+        <div id='q1' class='question'>
+            1. What is the difference between == and ===.  Give an example of when it's appropriate to use each.
+        </div>
+        <div id='a1' class='answer'>
+            == is the abstract equality operator, === is the strict equality operator. <br>
+            The abstract equality operator will attempt to coerce the values being compared. eg..<br><br>
+            console.log("5" == 5); //true;<br>
+            console.log("5" === 5); //false;<br><br>
+            In most cases the strict equality triple equals will be the 'safest' solution to go with - but there may still be instances where it's acceptable to use the abstract operator where you expect coercion to take place. eg. maybe a string of 1's and 0's could be used to store/set the visibility of a series of UI items to true or false. 
+        </div>
+
+
+        
+        <div id='q2' class='question'>
+            2. What is the difference between null and undefined
+        </div>
+        <div id='a2' class='answer'>
+           'Undefined' relates to when a variable has been declared, but has not had any value assigned to it (and is also returned if attempting to use a non-existent property on an object).  Null, on the other hand, is an assigned 'blank' value. <br>
+           'null' is of type object.  'undefined' is of type undefined.
+        </div>
+
+
+        <div id='q3' class='question'>
+            3. What would the result of 4 + 8 + "9" be and why ?
+        </div>
+        <div id='a3' class='answer'>
+           The '+' operator is used for both numeric addition and string concatenation.  Numeric operations will apply in BODMAS order, but as soon as a string is encountered the result will be converted to a string.<br>
+           In this above case the result will therefore be 129:
+           <div id='a3Result' class='codeOuptut'></div> 
+        </div>
+
+        <div id='q4' class='question'>
+            4. What are five JS data types?
+        </div>
+        <div id='a4' class='answer'>
+            <ul>
+                <li>'string' - A series of characters</li>
+                <li>'number' - A number (decimal or integer)</li>
+                <li>'boolean' - A value which is either true or false</li>
+                <li>'array' - A 'list' of elements (which can be any of our data types)</li>
+                <li>'object' - A collection of key/value pair properties and/or more complex entities.</li>
+            </ul>
+        </div>
+
+        <div id='q5' class='question'>
+            5. List ways to create and assign a property to an object.
+        </div>
+        <div id='a5' class='answer'>
+            <pre>
+                <code>
+    a5(){
+        console.log('a5');
+
+        //Create a new object using a constructor then assign a property 'nProp' with a value of 1
+        let oObjecta = new Object();
+        oObjecta.nProp = 1;
+
+        //Create an object using an initialiser / literal notation and assign the same property as it's created
+        let oObjectb = {
+            nProp:1
+        }
+
+        //Properties can also be assigned using strings / brackets (useful for property keys with spaces)
+        let oObjectc ={};
+        oObjectc['nProp'] = 1;
+
+        //Property keys can be identifiers, numbers or strings
+        let oObjectd ={
+            nProp1:1,
+            2:2,
+            'nProp 3': 3
+        };
+
+        //using assign it's also possible to clone and merge properties from other objects:
+        let oObjecte = {nProp:1};
+        let oObjectf = Object.assign({}, obj);
+
+        console.log(oObjecta);
+        console.log(oObjectb);
+        console.log(oObjectc);
+        console.log(oObjectd);
+        console.log(oObjectf);
+    }
+            
+                </code>
+            </pre>
+        </div>
+
+
+        <div id='q6' class='question'>
+            6. What would be logged if this code was executed and why:
+            <pre class='questionCode'>
+                <code>
+    function logMessage() {
+        console.log(message);
+    }
+    logMessage("Hello World");
+                </code>
+            </pre>
+        </div>
+        <div id='a6' class='answer'>
+           The above code results in a runtime error, as 'message' is not passed as a parameter to the function.  The following would resolve the problem:
+           <pre>
+                <code>
+    function logMessage(message) {
+        console.log(message);
+    }
+    logMessage("Hello World");
+                </code>
+            </pre>
+        </div>
+
+
+
+        <div id='q7' class='question'>
+            7.Spot the error
+            <pre class='questionCode'>
+                <code>
+    [ "a", 2, { "C": 1 } ].filter(function (element) { return element = "a"}); 
+                </code>
+            </pre>
+        </div>
+        <div id='a7' class='answer'>
+            The filter method performs a test on each element of an array, and returns a new array based on wether the conditions of the method evaluate to true.<br>
+            Presumably, this logic is only supposed to return an array of elements which are equal to "a"?  However an assignment operator has been used rather than an equality operator - so the test will evaluate to true for every element. 
+        </div>
+
+
+        <div id='q8' class='question'>
+            8. Spot the errors
+            <pre class='questionCode'>
+                <code>
+    var someNumbers = [ 1, 2, 3, 4, 5 ];
+    var total = 0;
+    for (var i = 0 ; i <= someNumbers.length ; ++i)
+    {
+        count += someNumbers[i];
+    }
+    console.log("Total : " + count);
+                </code>
+            </pre>
+        </div>
+        <div id='a8' class='answer'>
+            Couple of errors.  Firstly 'count' hasn't been declared (variable 'total' should be used instead), secondly the second conditional statement within the for loop should just be a 'less than' comparison operator - not 'less than or equal to', otherwise we'll try and add an element at index 5 in the array (which doesn't exist), and the output will be NaN, rather than 15.  
+            <pre>
+                <code>
+    a8(){
+        var someNumbers = [ 1, 2, 3, 4, 5 ];
+        var total = 0;
+        for (var i = 0 ; i < someNumbers.length ;++i)
+        {
+            console.log(someNumbers[i] + " " + total);
+            total += someNumbers[i];
+        }
+        console.log("Total : " + total);
+    }
+                </code>
+            </pre>
+        
+        </div>
+
+        <div id='q9' class='question'>
+            9. Spot the errors
+            <pre class='questionCode'>
+                <code>
+    var symbolMatrix = [
+        [ 1,1,1 ],
+        [ 2,2,2 ],
+        [ 3,3,3 ],
+        [ 4,4,4 ,
+        [ 5,5,5 ] ];
+    var targetSymbol = 3;
+    var positions;
+    for (var i = 0 ; i < symbolMatrix.length ; i++)
+    {
+        for (var j = 0 ; j < symbolMatrix[i].length ; i++)
+        {
+            if (symbolMatrix[i][j] == targetSymbol) {
+                positions.push({x: i, y: j});
+            }
+        }
+    }
+    console.log("Positions : " + positions)
+                </code>
+            </pre>
+        </div>
+        <div id='a9' class='answer'>
+            We've got a syntax error in the multidimensional array at element 3 - should be [4,4,4]<br>
+            Within the inner for loop, we should be incrementing j (not i) in our third statement.<br>
+            (Also, the final console log isn't particularly helpful).
+            <pre>
+                <code>
+    a9(){
+        var symbolMatrix = [
+            [ 1,1,1 ],
+            [ 2,2,2 ],
+            [ 3,3,3 ],
+            [ 4,4,4 ],
+            [ 5,5,5 ] ];
+        var targetSymbol = 3;
+        var positions = [];
+        for (var i = 0 ; i < symbolMatrix.length ; i++)
+        {
+            console.log(symbolMatrix[i]);
+            for (var j = 0 ; j < symbolMatrix[i].length ; j++)
+            {
+                if (symbolMatrix[i][j] == targetSymbol) {
+                    positions.push({x: i, y: j});
+                }
+            }
+        }
+        console.log("Positions : ")  
+        console.log(positions);      
+    }
+                </code>
+            </pre>
+            <div id='a9Result' class='codeOuptut'></div> 
+        </div>
+
+
+        <div id='q10' class='question'>
+            10. Write a script to convert this 3 x 5 matrix into a 5 x 3 matrix
+            <pre class='questionCode'>
+                <code>
+    var symbolMatrix = [
+    [ "A","A","A","A","A" ]
+    [ "B","B","B","B","B" ]
+    [ "C","C","C","C","C" ] ];
+                </code>
+            </pre>
+        </div>
+        <div id='a10' class='answer'>
+            The following script will take a multidimensional array of X by Y and output another multidimensional array of Y by X:
+            <pre>
+                <code>
+    invertMatrix(aInputMatrix){
+        let nInputMatrixLength = aInputMatrix.length;
+        let nInputMatrixElementLength = aInputMatrix[0].length;
+
+        let aOutputMatrix = [];
+
+        for(let i=0;i < nInputMatrixElementLength;i++){
+            let aInnerArray = [];
+            for(let j=0;j < nInputMatrixLength;j++){
+                aInnerArray.push(aInputMatrix[j][i]);
+            }
+            aOutputMatrix.push(aInnerArray);
+        }
+
+        console.log(aOutputMatrix);
+        return aOutputMatrix;
+    }
+
+    /*
+        console log of aOutputMatrix: 
+        (5) [Array(3), Array(3), Array(3), Array(3), Array(3)]
+        0: (3) ["A", "B", "C"]
+        1: (3) ["A", "B", "C"]
+        2: (3) ["A", "B", "C"]
+        3: (3) ["A", "B", "C"]
+        4: (3) ["A", "B", "C"]
+    */
+                </code>
+            </pre>
+            <div id='a10Result' class='codeOuptut'></div> 
+        </div>
+
+
+        <div id='q11' class='question'>
+        11. Continuing with the same script to convert the letters to numbers using this map :
+        <pre class='questionCode'>
+            <code>
+    var symbolMap = { "A":0,"B":1,"C":2 };
+            </code>
+        </pre>
+        </div>
+        <div id='a1' class='answer'>
+           The following method takes a matrix (an array containing arrays which, in turn, contain strings), and a map object, and substitutes the strings for numbers and then returns a new matrix.
+            <pre>
+                <code>
+    mapMatrix(aInputMatrix, oMap){
+        console.log('mapMatrix');
+        
+        let aOutputMatrix = [];
+
+        for(let i=0;i < aInputMatrix.length;i++){
+            let aInnerArray = aInputMatrix[i];
+            let aNewInnerArray = aInnerArray.map(mapFunc);
+            console.log(aNewInnerArray);
+            aOutputMatrix.push(aNewInnerArray);
+        }
+        
+        function mapFunc(sEl) {
+            console.log(sEl);
+            console.log(oMap[sEl]);
+            return oMap[sEl];
+        }
+
+        return aOutputMatrix;
+    }
+
+    /*
+    (5) [Array(3), Array(3), Array(3), Array(3), Array(3)]
+    0: (3) [0, 1, 2]
+    1: (3) [0, 1, 2]
+    2: (3) [0, 1, 2]
+    3: (3) [0, 1, 2]
+    4: (3) [0, 1, 2]
+    */
+                </code>
+            </pre>
+            <div id='a11Result' class='codeOuptut'></div> 
+           
+        </div>
+
+
+        <div id='q12' class='question'>
+            12. Continuing with the same script, write a function which finds matching values and outputs the number and the count
+        </div>
+        <div id='a12' class='answer'>
+
+            The following method takes a matrix of numbers and/or strings and returns an object with counts for the various values 
+            <pre>
+                <code>
+    countMatrixMatchingValues(aInputMatrix){
+        console.log('countMatrixMatchingValues');
+        let oOutput = {};
+        for(let i=0;i < aInputMatrix.length;i++){
+            let aInnerArray = aInputMatrix[i]
+            for(let j=0;j < aInnerArray.length;j++){
+                let el = aInnerArray[j];
+                console.log(el);
+                if(!oOutput[el]){
+                    oOutput[el]=1;
+                }else{
+                    oOutput[el]++;
+                }
+            }
+        }
+
+        console.log(oOutput); //{0: 5, 1: 5, 2: 5}
+    }
+                </code>
+            </pre>
+
+
+            <div id='a12Result' class='codeOuptut'></div> 
+        </div>
+
+
+        <div id='q13' class='question'>
+            13. Continuing with the same script, randomise the input symbol matrix and ensure code from 10, 11, and 12 still execute correctly
+        </div>
+        <div id='a13' class='answer'>
+            So the following will create a new random matrix on a refresh, then perform the same functions as per answsers 10,11 and 12... <br><br>
+
+            Our original randomised 3 x 5 matrix (hit refresh to randomise):<br>
+            <div id='a13ResultInput' class='codeOuptut'></div><br>
+            We then convert to a 5 x 3:<br> 
+            <div id='a13ResultOutput1' class='codeOuptut'></div><br> 
+            Then letters get mapped to numbers based on our symbol map object:<br>
+            <div id='a13ResultOutput2' class='codeOuptut'></div><br>
+            Finally we create an object which contains cumulative totals for how many of each element we have:<br> 
+            <div id='a13ResultOutput3' class='codeOuptut'></div> 
+        </div>
+
+
+
+        <div id='q14' class='question'>
+            14. Write a parser that converts the first JSON string into the second JSON string (you can use JSON.stringify and JSON.parse to turn them into objects)
+            <pre class='questionCode'>
+                <code>
+    "{"grid":[["L1","L1","L1","L1"],["L1","L1","L4","L4"],["L1","L1","L4","L4"],["L3","H1","H1","L2"],["H1","H1","H1","L4"]],"winningLines":[{"lineIndex":0,"symbol":"L1","matchCount":3,"line":[0,0,0,0,0],"win":4},{"lineIndex":1,"symbol":"L1","matchCount":3,"line":[1,1,1,1,1],"win":4},{"lineIndex":4,"symbol":"L1","matchCount":3,"line":[0,1,0,1,0],"win":4},{"lineIndex":7,"symbol":"L1","matchCount":3,"line":[1,0,1,0,1],"win":4},{"lineIndex":10,"symbol":"L1","matchCount":3,"line":[0,0,1,2,2],"win":4},{"lineIndex":14,"symbol":"L1","matchCount":3,"line":[1,0,0,0,1],"win":4},{"lineIndex":15,"symbol":"L1","matchCount":3,"line":[2,1,1,1,2],"win":4},{"lineIndex":17,"symbol":"L1","matchCount":3,"line":[0,1,1,1,0],"win":4}]}"
+
+    "{"symbolMatrix":[[5,5,5,5],[5,5,8,8],[5,5,8,8],[7,1,1,6],[1,1,1,8]],"lineWins":[{"id":0,"win":4,"symbol":5,"symbolCount":3,"definition":[0,0,0,0,0],"lineSymbols":[5,5,5,-1,-1]},{"id":1,"win":4,"symbol":5,"symbolCount":3,"definition":[1,1,1,1,1],"lineSymbols":[5,5,5,-1,-1]},{"id":4,"win":4,"symbol":5,"symbolCount":3,"definition":[0,1,0,1,0],"lineSymbols":[5,5,5,-1,-1]},{"id":7,"win":4,"symbol":5,"symbolCount":3,"definition":[1,0,1,0,1],"lineSymbols":[5,5,5,-1,-1]},{"id":10,"win":4,"symbol":5,"symbolCount":3,"definition":[0,0,1,2,2],"lineWinSymbols":[5,5,5,-1,-1],"lineSymbols":[5,5,5,-1,-1]},{"id":14,"win":4,"symbol":5,"symbolCount":3,"definition":[1,0,0,0,1],"lineSymbols":[5,5,5,-1,-1]},{"id":15,"win":4,"symbol":5,"symbolCount":3,"definition":[2,1,1,1,2],"lineSymbols":[5,5,5,-1,-1]},{"id":17,"win":4,"symbol":5,"symbolCount":3,"definition":[0,1,1,1,0],"lineSymbols":[5,5,5,-1,-1]}]}"
+                </code>
+            </pre>
+        </div>
+        <div id='a14' class='answer'>
+            The following demonstrates the data being parsed from the input to the desired output.  (n.b. I've assumed that 'lineSymbols' needs to be an array the same length as line/definition, where the first elements up to the matchCount/symbolCount value are set to be the same as the 'symbol', and the remainder as set to -1)<br>
+            <pre>
+                <code>
+    a14(){
+        let oDesiredInput = '{"grid":[["L1","L1","L1","L1"],["L1","L1","L4","L4"],["L1","L1","L4","L4"],["L3","H1","H1","L2"],["H1","H1","H1","L4"]],"winningLines":[{"lineIndex":0,"symbol":"L1","matchCount":3,"line":[0,0,0,0,0],"win":4},{"lineIndex":1,"symbol":"L1","matchCount":3,"line":[1,1,1,1,1],"win":4},{"lineIndex":4,"symbol":"L1","matchCount":3,"line":[0,1,0,1,0],"win":4},{"lineIndex":7,"symbol":"L1","matchCount":3,"line":[1,0,1,0,1],"win":4},{"lineIndex":10,"symbol":"L1","matchCount":3,"line":[0,0,1,2,2],"win":4},{"lineIndex":14,"symbol":"L1","matchCount":3,"line":[1,0,0,0,1],"win":4},{"lineIndex":15,"symbol":"L1","matchCount":3,"line":[2,1,1,1,2],"win":4},{"lineIndex":17,"symbol":"L1","matchCount":3,"line":[0,1,1,1,0],"win":4}]}';
+        console.log('DESIRED INPUT>');
+        console.log(JSON.parse(oDesiredInput));
+        let oDesiredOutput = '{"symbolMatrix":[[5,5,5,5],[5,5,8,8],[5,5,8,8],[7,1,1,6],[1,1,1,8]],"lineWins":[{"id":0,"win":4,"symbol":5,"symbolCount":3,"definition":[0,0,0,0,0],"lineSymbols":[5,5,5,-1,-1]},{"id":1,"win":4,"symbol":5,"symbolCount":3,"definition":[1,1,1,1,1],"lineSymbols":[5,5,5,-1,-1]},{"id":4,"win":4,"symbol":5,"symbolCount":3,"definition":[0,1,0,1,0],"lineSymbols":[5,5,5,-1,-1]},{"id":7,"win":4,"symbol":5,"symbolCount":3,"definition":[1,0,1,0,1],"lineSymbols":[5,5,5,-1,-1]},{"id":10,"win":4,"symbol":5,"symbolCount":3,"definition":[0,0,1,2,2],"lineWinSymbols":[5,5,5,-1,-1],"lineSymbols":[5,5,5,-1,-1]},{"id":14,"win":4,"symbol":5,"symbolCount":3,"definition":[1,0,0,0,1],"lineSymbols":[5,5,5,-1,-1]},{"id":15,"win":4,"symbol":5,"symbolCount":3,"definition":[2,1,1,1,2],"lineSymbols":[5,5,5,-1,-1]},{"id":17,"win":4,"symbol":5,"symbolCount":3,"definition":[0,1,1,1,0],"lineSymbols":[5,5,5,-1,-1]}]}';
+        console.log('DESIRED OUTPUT>');
+        console.log(JSON.parse(oDesiredOutput));
+
+        let oOutput = this.parseData(JSON.parse(oDesiredInput));
+        console.log(oOutput);
+
+        let elA14ResultOutput1 = document.getElementById('a14ResultOutput1');
+        elA14ResultOutput1.innerHTML = oDesiredInput;
+
+        let elA14ResultOutput2 = document.getElementById('a14ResultOutput2');
+        elA14ResultOutput2.innerHTML = JSON.stringify(oOutput);   
+    }
+
+
+    parseData(oInputJSON){
+        console.log('parseData');
+        //console.log(oInputJSON);
+
+        let oOutput = {};
+
+        //create symbolMatrix based on grid data:
+        console.log(oInputJSON.grid);
+        let oSymbolMap = { "L1":5,"L2":6,"L3":7,"L4":8,"H1":1};
+        oOutput.symbolMatrix=this.mapMatrix(oInputJSON.grid,oSymbolMap);
+        console.log('oOutput');
+        console.log(oOutput);
+
+        //Then create lineWins based on winningLines data:
+        oOutput.lineWins=[];
+        for(let i=0;i < oInputJSON.winningLines.length;i++){
+            let oWinningLine = oInputJSON.winningLines[i];
+            console.log('oWinningLine (input)');
+            console.log(oWinningLine);
+
+            let oLineWin ={};
+            oLineWin.id = oWinningLine.lineIndex;
+            oLineWin.win = oWinningLine.win;
+            oLineWin.symbol = oSymbolMap[oWinningLine.symbol];
+            oLineWin.symbolCount = oWinningLine.matchCount;
+            oLineWin.definition = oWinningLine.line;
+            
+            oLineWin.lineSymbols = [];
+            for(let j=0;j < oLineWin.definition.length;j++){
+                if(j < oLineWin.symbolCount){
+                    oLineWin.lineSymbols.push(oLineWin.symbol);
+                }else{
+                    oLineWin.lineSymbols.push(-1);
+                }
+            }
+
+            //console.log('oLineWin (output)');
+            //console.log(oLineWin);
+            oOutput.lineWins.push(oLineWin);
+        }
+
+        return oOutput;
+    }
+                </code>
+            </pre>
+
+            <br>Original String:<br>
+            <div id='a14ResultOutput1' class='codeOuptut'></div><br><br>
+            Parsed Output (stringified object):<br>
+            <div id='a14ResultOutput2' class='codeOuptut'></div> 
+        </div>
+
+
+
+        <div id='q15' class='question'>
+            15. Lastly, combine all of the scripts you've written into reusable functions and / or classes.
+        </div>
+        <div id='a15' class='answer'>
+           For the purpose of this test I've written a single class that contains (amongst other things) the functions detailed below - these functions are used repeatedly to respond to the original questions.  Some of the output on this page is actually generated based on the same class, which can be found in the js module at the <a href='js/index.js'>following location</a>.
+           More examples of my code can be found here on <a href='https://github.com/RyanJGibson'>github</a>.
+           Further examples of my work can be seen here on my site, <a href='http://www.bigbadspaceship.com'>bigBadSpaceship.com</a>.
+        
+        <pre>
+            <code>
+
+                invertMatrix(aInputMatrix){
+                    let nInputMatrixLength = aInputMatrix.length;
+                    let nInputMatrixElementLength = aInputMatrix[0].length;
+            
+                    let aOutputMatrix = [];
+            
+                    for(let i=0;i < nInputMatrixElementLength;i++){
+                        let aInnerArray = [];
+                        for(let j=0;j < nInputMatrixLength;j++){
+                            aInnerArray.push(aInputMatrix[j][i]);
+                        }
+                        aOutputMatrix.push(aInnerArray);
+                    }
+            
+                    console.log(aOutputMatrix);
+                    return aOutputMatrix;
+                }
+
+
+                mapMatrix(aInputMatrix, oMap){
+                    console.log('mapMatrix');
+                    
+                    let aOutputMatrix = [];
+            
+                    for(let i=0;i < aInputMatrix.length;i++){
+                        let aInnerArray = aInputMatrix[i];
+                        let aNewInnerArray = aInnerArray.map(mapFunc);
+                        console.log(aNewInnerArray);
+                        aOutputMatrix.push(aNewInnerArray);
+                    }
+                    
+                    function mapFunc(sEl) {
+                        //console.log(sEl);
+                        //console.log(oMap[sEl]);
+                        return oMap[sEl];
+                    }
+                    return aOutputMatrix;
+                }
+
+
+                countMatrixMatchingValues(aInputMatrix){
+                    console.log('countMatrixMatchingValues');
+                    let oOutput = {};
+                    for(let i=0;i < aInputMatrix.length;i++){
+                        let aInnerArray = aInputMatrix[i]
+                        for(let j=0;j < aInnerArray.length;j++){
+                            let el = aInnerArray[j];
+                            console.log(el);
+                            if(!oOutput[el]){
+                                oOutput[el]=1;
+                            }else{
+                                oOutput[el]++;
+                            }
+                        }
+                    }
+
+                    console.log(oOutput); //{0: 5, 1: 5, 2: 5}
+                    return oOutput;
+                }
+
+                generateRandomMatrix(nX,nY,aElements){
+                    let aInputSymbols = aElements;
+                    let aRandomMatrix = [];
+                    for(let i=0;i < nY;i++){
+                        let aInnerArray =[];
+                        for(let j=0;j < nX;j++){
+                            let sRanElPos = parseInt(Math.random()*aInputSymbols.length);
+                            aInnerArray.push(aInputSymbols[sRanElPos]);
+                        }
+                        aRandomMatrix.push(aInnerArray);
+                    }
+    
+                    console.log('aRandomMatrix:');
+                    console.log(aRandomMatrix);
+                    return aRandomMatrix;
+                }
+
+
+            </code>
+        </pre>
+
+        </div>
+        <script type='module' src="js/index.js"></script>
+    </body>
+</html>
+
+
